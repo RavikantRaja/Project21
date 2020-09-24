@@ -28,11 +28,21 @@ function draw() {
     bullet.velocityX = speed;
   }
 
-  if(wall.x-bullet.x <bullet.width/2+bullet.width/2)
+  if(hasCollided(bullet,wall))
   {
     bullet.velocityX = 0;
   if(damage<10){bullet.shapeColor = color(0,255,0)}
   if(damage>10){bullet.shapeColor = color(255,0,0)}
   }
   drawSprites();
+}
+
+function hasCollided(xyz,abc)
+{
+  bulletRightEdge = xyz.x+xyz.width;
+  wallLeftEdge = abc.x;
+  if(bulletRightEdge>=wallLeftEdge){
+    return true;
+  }
+  return false;
 }
